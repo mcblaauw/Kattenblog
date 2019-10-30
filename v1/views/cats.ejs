@@ -1,0 +1,15 @@
+<% include partials/header %>
+    
+<h1>Cats from database</h1>
+
+<div class="container">
+    <% cats.forEach(function(cat) { %>
+        <div class="catdiv">
+            <h3><%= cat.name %></h3>
+            <img src="<%= cat.image %>" alt="random cat image">
+        </div>
+    <% }) %>
+    
+</div>
+
+<% include partials/footer %>
