@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+    
+<h1>Add a new cat</h1>
+
+<div id="randomcat"></div>
+
+<form method="POST" action="/cats/create">
+    <input id="dbname" type="text" name="name" placeholder="Enter name of cat" required>
+    <input id="dbimage" type="hidden" name="image" value="http://lorempixel.com/640/480/cats">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<button id="RanCat" class="btn btn-warning">Random cat image</button>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+<script>
+    $(function () {
+        var socket = io();
+        $('button#RanCat').on('click',function(e){
+            e.preventDefault(); // prevent page reloading
+            socket.emit('cat-event');
+        });
+        socket.on('message', function(fakerurl){
+            $('#randomcat').html('<a href="#"><img src="'+fakerurl+'" alt="random cat"></a>');
+            $('#dbimage').val(fakerurl);
+        });
+    });
+</script>
+
+
+<% include ../partials/footer %>
