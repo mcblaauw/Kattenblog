@@ -1,9 +1,21 @@
 <% include partials/header %>
     
-<h1>Welcome on my cat blog</h1>
-
 <div class="container">
-    <img src="<%= cats %>" alt="random cat image">
+    <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-header">
+                <h1>Welcome on my cat blog</h1>
+            </div>
+            <div class="card-body"></div>
+                <div>
+                    <img src="<%= cats %>" alt="random cat image">
+                </div>
+            </div>
+        </div>
+        <div class="navbar">
+                <a href="/cats">More cats? click here</a>
+        </div>
+    </div>
 </div>
 
 <% include partials/footer %>
