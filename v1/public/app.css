@@ -1,5 +1,45 @@
-div.catdiv {
-    border: 2px dotted lightblue;
-    width: 50%;
-    height: auto;
+.row {
+    display: flex;
+    flex-wrap: wrap;
 }
+
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 100%;
+}
+
+div.column-md-6 {
+    width: 30%; 
+    margin: 25px auto;
+}
+
+.catimage {
+    position: relative;
+}
+
+.catimage:hover img{
+    opacity: 0.2;
+}
+
+.catimage:hover .cat-edit{
+    opacity: 1.0;
+}
+
+.cat-edit {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.cat-form {
+    display: none;
+}
+

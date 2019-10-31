@@ -10,45 +10,17 @@ app.set("view engine","ejs");
 app.use(express.static("public"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-const Cats = require('./models/cat.model');
+const cat = require('./routes/cat.route'); 
+app.use('/cats/', cat);
 
-// ----------- Routes -------------------
-app.get("/", function(req,res) {
-    //Random cat for homepage
-    var acat = faker.image.cats();
-    res.render("home",{cats: acat});
+// ----------- General Routes -------------------
+app.get("/home", function (req,res) {
+    //landing page
+    res.render("home");
 });
 
-app.get("/cats", function(req,res,next) {
-    // Import all cats from database
-    Cats.find({}, function(err, cats) {
-        if (err) {
-            return next(err);
-        } else {
-            res.render("cats",{cats: cats});
-        }
-    });
-});
-
-app.post("/cats/create", function (req,res) {
-    newCat = {name: req.body.name, image: req.body.image};
-    let Cat = new Cats(newCat);
-
-    Cat.save(function (err) {
-        if (err) return next(err);
-        console.log('Cat added to database');
-    });
-    
-    res.redirect("/cats");
-});
-
-app.get("/cats/create", function (req,res) {
-    //render to new cat page
-    res.render("cats/create");
-});
-
-app.get("*", function(req,res) {
-    res.send("The requested website does not exist!");
+app.get("*", function (req,res) {
+    res.send("404 error! You entered the wrong page!");
 });
 
 // --------- Socket.io ------------------
