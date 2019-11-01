@@ -1,17 +1,18 @@
 <% include ../partials/header %>
 
-<div class="container">
-    <header class="jumbotron">
-        <div class="container"></div>
-            <h1>Welcome to my cat blog!</h1>
-            <p>View our random picked cat pics</p>
-            <p>
-                <a class="btn btn-primary btn-large" href="/cats/create">Add new cat</a>
+<div class="container-fluid p-0">
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4 flowtext">Welcome to my cat blog!</h1>
+            <p class="lead flowtext">We show you the latest popular-by-vote random cat pics.</p>
+            <hr>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/cats/create" role="button">Add new cat</a>
             </p>
         </div>
-    </header>
+    </div>
     
-    <div class="row text-center">
+    <div class="row text-center p-4">
         <% cats.forEach(function(cat) { %>
             <div class="col-md-3 col-sm-6">
                 <div class="thumbnail">

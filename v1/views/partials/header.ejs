@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <!-- Additional personal CSS -->
     <link rel="stylesheet" type="text/css" href="/app.css">
     <!-- Font awesome-->
@@ -14,50 +15,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/brands.min.css" integrity="sha256-UZFVAO0Fn854ajzdWnJ2Oze6k1X4LNqE2RJPW3MBfq8=" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/solid.min.css" integrity="sha256-8DcgqUGhWHHsTLj1qcGr0OuPbKkN1RwDjIbZ6DKh/RA=" crossorigin="anonymous" />
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/flowtype.js"></script>
 
     <title>Cat blog</title>
 </head>
-<body>   
-    <!--Navigatiebalk-->
-    <!--
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Cat</a>
-        </div>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav navbar-right">
-                <li><a href="/">Login</a></li>
-                <li><a href="/">Sign Up</a></li>
-                <li><a href="/">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
--->
+<body>  
 
-<!--
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Hidden brand</a>
-
-            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 navbar-right">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-            </ul>
-
-            <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+<!--Mobile responsive light navbar design-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="d-flex flex-grow-1">
+        <!-- Homepage link on leftside-->
+        <a class="navbar-brand" href="/cats/home">
+            <span><i class="fas fa-home"></i></span>
+        </a>
+        <!-- if mobile then dropdown menu instead of rightside listing-->
+        <div class="w-100 text-right">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
-    </nav>
--->
+    </div>
+    <!-- listing of navbar menu elements using collapse-->
+    <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+        <ul class="navbar-nav ml-auto flex-nowrap">
+            <li class="nav-item">
+                <a href="/" class="nav-link m-2 menu-item nav-active">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link m-2 menu-item">Sign Up</a>
+            </li>
+            <li class="nav-item">
+                <a href="/" class="nav-link m-2 menu-item">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>

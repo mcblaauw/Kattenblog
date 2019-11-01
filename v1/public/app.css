@@ -1,10 +1,19 @@
+body {
+    font-size: 18px;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    line-height: 1.45;
+}
+
+h1 { font-size: 4em; text-align: center;}
+h2 { font-size: 3em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1em; }
+
 .row {
     display: flex;
     flex-wrap: wrap;
-}
-
-h1 {
-    text-align: center;
 }
 
 img {
@@ -41,5 +50,27 @@ div.column-md-6 {
 
 .cat-form {
     display: none;
+}
+
+.fa-home {
+    font-size: 150%;
+    color: white;
+}
+
+.navbar {
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.jumbotron-fluid {
+    margin-top: 10px;
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
