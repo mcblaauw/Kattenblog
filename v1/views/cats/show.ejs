@@ -12,23 +12,55 @@
     <div class="row justify-content-center">
         <div class="column-md-6 align-self-center text-center">
             <div class="cat-form"> <!--uitklapbaar-->
-                <form method="POST" action="/cats/<%= cats._id %>/update">
+                <form method="POST" action="/cats/<%= cats._id %>?_method=PUT">
                     <div class="form-group">
                         <button id="RanCat" class="btn btn-outline-primary">Update your random cat image</button>
                     </div>
                     <div class="form-group">
-                        <input id="dbname" class="form-control" type="text" name="name" value="<%= cats.name %>" required>
-                        <input id="dbimage" type="hidden" name="image" value="<%= cats.image %>">
+                        <input id="dbname" class="form-control" type="text" name="cats[name]" value="<%= cats.name %>" required>
+                        <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
                     </div>
                 </form>   
             </div>  
-            <div class="row justify-content-center"> 
+            <div class="row justify-content-center py-2"> 
                 <button id="catupdate" class="btn btn-primary">Edit</button>
-                <button id="catdelete" class="btn btn-danger" onclick="location.href='/cats/<%= cats._id %>/delete'">Remove</button>
-                <button id="catgoback" class="btn btn-outline-primary" onclick="location.href='/cats/home'">Go back</button> 
+                <form method="POST" action="/cats/<%= cats._id %>?_method=DELETE">
+                    <button id="catdelete" class="btn btn-danger">Remove</button>
+                </form>
+                <button id="catgoback" class="btn btn-outline-primary" onclick="location.href='/cats'">Go back</button> 
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center py-2">
+        <div class="column-md-6 align-self-center text-center">
+            <div class="card">
+                <div class="card-header">Comment section</div>
+                <div class="card-body">
+                    <div class="commentlist">
+                        <% cats.comments.forEach(function(comment) { %>
+                            <div class="thumbnail">
+                                <li>Name: <b><%= comment.name %></b></li>
+                                <li><%= comment.message %></li>
+                                <hr>
+                            </div>
+                        <% }); %>
+                    </div>
+                    <form method="POST" action="/cats/<%= cats._id %>/comments">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="comments[name]" placeholder="Your screen name" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="comments[message]" placeholder="Your message" required>
+                        </div>
+                        <div class="form-group">
+                            <button id="addcomment" class="btn btn-primary btn-large">Add comment</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
