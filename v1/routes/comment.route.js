@@ -7,5 +7,6 @@ const comment_controller = require('../controllers/comment.controller');
 
 // Cats overview
 router.post('/',comment_controller.create);
+router.delete('/:comment_id',comment_controller.delete);
 
 module.exports = router;

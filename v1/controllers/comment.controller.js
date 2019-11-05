@@ -3,23 +3,32 @@ const Cat = require('../models/cat.model');
 
 // ----------- Routes -------------------
 exports.create = function (req,res,next) {
-    newComment = req.body.comments;
+    let newComment = req.body.comments;
 
     // Push comment to Cat collection
     Cat.findById(req.params.id, function(err, cat) {
         if (err) {
             return next(err); 
         } else {
-            console.log(newComment);
             //new comment to Db
             let MakeComment = new Comment(newComment);
             MakeComment.save();
             //update cat Db
-            cat.comments.push(newComment);
+            cat.comments.push(MakeComment);
             cat.save();
-            console.log(cat);
-            //req.flash("success", "Comment succesfully added.");
-            res.redirect("/cats/"+req.params.id);
+            res.redirect("back");
+        }
+    });
+};
+
+exports.delete = function (req,res,next) {
+    Comment.findByIdAndDelete(req.params.comment_id, function(err) {
+        if (err) {
+            console.log(err);
+            res.redirect("back");
+        } else {
+            console.log('Comment has been deleted!');   
+            res.redirect('back');
         }
     });
 };

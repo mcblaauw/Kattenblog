@@ -1,5 +1,28 @@
+/*
 body {
     font-size: 18px;
+    background: #DAE2F8;  
+    background: -webkit-linear-gradient(to right, #020024, #00d4ff);  
+    background: linear-gradient(to right, #020024, #00d4ff); 
+    font-family: Roboto;
+}
+*/
+
+.navbar {
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.jumbotron-fluid {
+    margin-top: 10px;
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 h1,h2,h3,h4,h5,h6,p {
@@ -48,29 +71,58 @@ div.column-md-6 {
     text-align: center;
 }
 
-.cat-form {
+.cat-form, .commentlist, .confirmation {
     display: none;
 }
+
+/* 
+Font Awesome styling
+*/
 
 .fa-home {
     font-size: 150%;
     color: white;
 }
 
-.navbar {
-    border-bottom-left-radius: 5%;
-    border-bottom-right-radius: 5%;
+/*
+Comments styling 
+*/
+.card-inner{
+    margin-left: 4rem;
 }
 
-.navbar-dark .navbar-nav .nav-link {
-    color: white;
+.btnPrimaryToggle {
+    background-color: #007BFF;
 }
 
-.jumbotron-fluid {
-    margin-top: 10px;
-    border-top-left-radius: 3%;
-    border-top-right-radius: 3%;
-    padding-top: 15px;
-    padding-bottom: 15px;
+.btnRemoveToggle {
+    background-color: #DC3445;
 }
 
+.confirmation .card {
+    margin-bottom: 10%;
+    border: 1.5px solid red;
+}
+
+/* 
+To include later: Fader which makes part of comments blurry at first but reveal it later when user presses button.
+*/
+.fader {
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0), #fff);
+}
+
+/*
+Edit / Remove comments
+*/
+
+button#trash:hover, a#pencil:hover {
+    opacity: 0.5;
+}
+
+.fa-edit {
+    color: blue;
+}
+
+.fa-trash {
+    color: rgb(255, 15, 0);
+}
