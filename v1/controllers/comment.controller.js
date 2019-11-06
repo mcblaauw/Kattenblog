@@ -16,7 +16,7 @@ exports.create = function (req,res,next) {
             //update cat Db
             cat.comments.push(MakeComment);
             cat.save();
-            res.redirect("back");
+            res.redirect("/cats/"+req.params.id);
         }
     });
 };

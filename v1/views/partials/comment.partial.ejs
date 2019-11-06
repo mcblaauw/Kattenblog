@@ -1,0 +1,30 @@
+<div class="card" id="icomment">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+            </div>
+            <div class="col-md-8">
+                <p><strong><%= comment.name %></strong></p>
+                <div class="clearfix"></div>
+                <p><%= comment.message %></p>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-md-4">
+                <span style="display: inline;">
+                    <a href="#" id="pencil"><i class="fa fa-edit"></i></a>
+                    <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
+                        <button id="trash" style="display:inline; border:none; background-color: white;"><i class="fa fa-trash"></i></button>
+                    </form>
+                </span>
+            </div>
+        
+            <div class="col text-right">
+                <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
+            </div>
+        </div>
+        <!-- Replies on comments here-->
+    </div>
+</div>

@@ -32,9 +32,8 @@ exports.cat_create_post = function (req,res,next) {
 
 exports.cat_read = function(req,res,next) {
     Cat.findById(req.params.id)
-        .populate("comments")
+        .populate("comments") //TODO: should popualte without need of refresh
         .exec(function(err, cat) {
-            console.log(cat);
             if (err) {
                 return next(err);
             } else {

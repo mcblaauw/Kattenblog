@@ -5,8 +5,8 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser"); //POST request handler, puts it inside req.body from forms.
 const methodOverride = require("method-override"); //HTML PUT and DELETE requests handling
-const expressSanitizer = require("express-sanitizer");
-const faker = require("faker/locale/nl");
+const expressSanitizer = require("express-sanitizer"); //Sanitize user input for invalid js protection
+const faker = require("faker/locale/nl"); // faker cats
 //socket.io experiment (server-client realtime communication)
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
