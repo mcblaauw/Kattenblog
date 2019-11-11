@@ -12,14 +12,15 @@
         </div>
         <div class="row justify-content-between">
             <div class="col-md-4">
-                <span style="display: inline;">
+                <span>
+                    <!--Edit form: Press button, opens window with form fields to change, submit through rotues directly first (later bypass with jquery when necessary)-->
                     <form id="comedit" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT" style="display: inline;">
                         <input type="hidden" name="comment[name]" value="<%= comment.name %>">
                         <input type="hidden" name="comment[message]" value="<%= comment.message %>">
-                        <button id="pencil" style="display:inline; border:none; background-color: white;"><i class="fa fa-edit"></i></button>
+                        <button id="pencil" style="border:none; background-color: white;"><i class="fa fa-edit"></i></button>
                     </form>
                     <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
-                        <button id="trash" style="display:inline; border:none; background-color: white;"><i class="fa fa-trash"></i></button>
+                        <button id="trash" style="border:none; background-color: white;"><i class="fa fa-trash"></i></button>
                     </form>
                 </span>
             </div>
