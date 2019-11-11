@@ -16,12 +16,25 @@ exports.create = function (req,res,next) {
             //update cat Db
             cat.comments.push(MakeComment);
             cat.save();
+            console.log('New comment has been added!');  
             res.redirect("/cats/"+req.params.id);
         }
     });
 };
 
-exports.delete = function (req,res,next) {
+exports.update = function(req,res) {
+    Comment.findByIdAndUpdate(req.params.comment_id, function(err) {
+        if (err) {
+            console.log(err);
+            res.redirect("back");
+        } else {
+            console.log('Comment has been updated!'); 
+            res.redirect("back");
+        }
+    });
+};
+
+exports.delete = function (req,res) {
     Comment.findByIdAndDelete(req.params.comment_id, function(err) {
         if (err) {
             console.log(err);

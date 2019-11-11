@@ -32,12 +32,16 @@ $("form#addcomment").submit(function(event){
     };
 
     // BACKEND Send the data using jQuery.post function
+    // As of jQuery 1.5, all of jQuery's Ajax methods return a superset of the XMLHTTPRequest object. Apply methods .done .fail and .always on it.
     var posting = $.post( url, {comments} );
- 
+
+    posting.fail(function() {
+        alert("error");
+    });
+
     posting.done(function() {
         console.log("new comment saved in database, now bring it up here!");
-        $(".commentlist").slideDown("slow");
-        $('#catcomments').addClass("btnPrimaryToggle");
+        window.location.reload();
     });
 });
 

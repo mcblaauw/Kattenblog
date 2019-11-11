@@ -60,12 +60,11 @@
                         <!-- Source of Comment Snippet: https://bootsnipp.com/snippets/M5obX-->
                         <%- include('../partials/comment.partial.ejs', {comment: comment}); %>
                         <!-- End of Bootstrap comment snippet-->
-                        <hr>
                     <% }); %>
                 </div>
             </div>
             <!-- Add a comment -->
-            <div class="card">
+            <div id="addcard" class="card my-3">
                 <div class="card-header"><h3>Add a comment</h3></div>
                 <div class="card-body">
                     <form id="addcomment" method="POST" action="/cats/<%= cats._id %>/comments">
@@ -77,6 +76,23 @@
                         </div>
                         <div class="form-group">
                             <button class="btn btn-primary btn-large">Add comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Update a comment -->
+            <div id="updatecard" class="card my-3"> 
+                <div class="card-header"><h3>Update your comment</h3></div>
+                <div class="card-body">
+                    <form id="updatecomment" action="">
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="comments[name]" required>
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" type="text" name="comments[message]" required>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-large">Update comment</button>
                         </div>
                     </form>
                 </div>

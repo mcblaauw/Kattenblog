@@ -71,7 +71,19 @@ div.column-md-6 {
     text-align: center;
 }
 
-.cat-form, .commentlist, .confirmation {
+.cat-form, .confirmation {
+    display: none;
+}
+
+.commentlist {
+    display: block;
+}
+
+#addcard {
+    display: block;
+}
+
+#updatecard {
     display: none;
 }
 

@@ -13,7 +13,11 @@
         <div class="row justify-content-between">
             <div class="col-md-4">
                 <span style="display: inline;">
-                    <a href="#" id="pencil"><i class="fa fa-edit"></i></a>
+                    <form id="comedit" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT" style="display: inline;">
+                        <input type="hidden" name="comment[name]" value="<%= comment.name %>">
+                        <input type="hidden" name="comment[message]" value="<%= comment.message %>">
+                        <button id="pencil" style="display:inline; border:none; background-color: white;"><i class="fa fa-edit"></i></button>
+                    </form>
                     <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
                         <button id="trash" style="display:inline; border:none; background-color: white;"><i class="fa fa-trash"></i></button>
                     </form>
