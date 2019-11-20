@@ -1,2 +1,2 @@
-# Yelpcamp
+# Kattenblog
 Udemy course backend exercise
