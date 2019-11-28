@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 let CatsSchema = new mongoose.Schema({
     name: {type: String, required: true, max: 100},
     image: {type: String, required: true, max: 200},
+    description: String,
     comments: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comments"
     }]
 });
 
-//local: var Cats = mongoose.model("Cats", CatsSchema);
 module.exports = mongoose.model('Cats', CatsSchema);

@@ -38,8 +38,12 @@ app.use(methodOverride("_method"));
 app.use('/cats/', catRoutes);
 app.use('/cats/:id/comments', commentRoutes);
 
+// Seeding the file
+var seedDB = require('./seeds');
+seedDB();
+
 // ----------- General Routes -------------------
-app.get("/home", function (req,res) {
+app.get("/", function (req,res) {
     //landing page
     res.render("home");
 });

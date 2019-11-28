@@ -20,13 +20,14 @@ exports.cat_create_post = function (req,res,next) {
     //Sanitize input fields by user >> remove <script> tags and other threads
     req.body.cats.name = req.sanitize(req.body.cats.name);//TODO: put in Middleware later
     
-    newCat = req.body.cats;
-    let MakeCat = new Cat(newCat);
-
-    MakeCat.save(function (err) {
-        if (err) return next(err);
-        console.log('Cat added to database');
-        res.redirect("/cats"); //redirect to ROUTE
+    Cat.create(req.body.cats, function(err){
+        if(err) {
+            console.log(err);
+            res.redirect('/cats');
+        } else {
+            console.log('Cat added to database');
+            res.redirect("/cats"); //redirect to ROUTE
+        }
     });
 };
 

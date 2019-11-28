@@ -15,6 +15,11 @@ $('#catcomments').on('click',function(){
     $('#catcomments').toggleClass("btnPrimaryToggle");
 });
 
+$('#catdelno').on('click',function(){
+    $(".confirmation").slideToggle("slow");
+    $('#catdelete').toggleClass("btnRemoveToggle");
+});
+
 // 2. Add submit handler to comment forms
 // Source: https://api.jquery.com/jQuery.post/
 $("form#addcomment").submit(function(event){

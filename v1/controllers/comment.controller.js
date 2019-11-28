@@ -3,21 +3,23 @@ const Cat = require('../models/cat.model');
 
 // ----------- Routes -------------------
 exports.create = function (req,res,next) {
-    let newComment = req.body.comments;
-
-    // Push comment to Cat collection
     Cat.findById(req.params.id, function(err, cat) {
         if (err) {
-            return next(err); 
+            console.log(err);
+            res.redirect('/cats'); 
         } else {
-            //new comment to Db
-            let MakeComment = new Comment(newComment);
-            MakeComment.save();
-            //update cat Db
-            cat.comments.push(MakeComment);
-            cat.save();
-            console.log('New comment has been added!');  
-            res.redirect("/cats/"+req.params.id);
+            //Add new comment to Db
+            Comment.create(req.body.comments, function(err, comment){
+                if(err) {
+                    console.log(err);
+                } else {
+                    //push comment into cat Db
+                    cat.comments.push(comment);
+                    cat.save();
+                    console.log('New comment has been added!');  
+                    res.redirect("/cats/"+req.params.id);
+                }
+            })            
         }
     });
 };

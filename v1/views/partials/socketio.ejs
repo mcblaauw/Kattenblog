@@ -5,13 +5,13 @@
 <script>
     $(function () {
         var socket = io();
-        $('button#RanCat').on('click',function(e){
+        $('input#RanCat').on('click',function(e){
             e.preventDefault(); // prevent page reloading
             $('#randomcat').html("");
             socket.emit('cat-event');
         });
         socket.on('message', function(fakerurl){
-            $('#randomcat').html('<a href="#"><img src="'+fakerurl+'" alt="random cat"></a>');
+            $('#randomcat').html('<a href="#"><img class="img-responsive" src="'+fakerurl+'" alt="random cat"></a>');
             $('#dbimage').val(fakerurl);
         });
     });

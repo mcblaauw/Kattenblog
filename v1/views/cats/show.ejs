@@ -1,59 +1,59 @@
 <% include ../partials/header %>
 
 <div class="container">
-    <h1 style="text-align: center;">Meet <%= cats.name %><i class="fas fa-paw ml-3"></i></h1>
-    <div class="row justify-content-center">
-        <div class="column-md-6 align-self-center text-center">
-            <div id="randomcat"></div>
-                <img src="<%= cats.image %>">
-            </div>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="column-md-6 align-self-center text-center">
-            <div class="confirmation"> <!--uitklapbaar-->
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="pb-2">Are you sure?<i class="fas fa-cat ml-2"></i><i class="fas fa-heart-broken ml-1"></i></h4>
-                        <form method="POST" action="/cats/<%= cats._id %>?_method=DELETE" style="display: inline;">
-                            <button id="catdelyes" class="btn btn-light btn-lg">YES</button>
-                        </form>
-                        <a id="catdelno" class="btn btn-light btn-lg ml-5">NO</a>
+    <div class="row mt-4">
+        <div class="col-md-8 col-sm-12">
+            <!-- Cat image + description -->
+            <div class="thumbnail">
+                <div id="randomcat">
+                    <img class="img-responsive" src="<%= cats.image %>">
+                    <div class="caption-full">
+                        <h4 class="text-center"><a>Meet <%= cats.name %><i class="fas fa-paw ml-1"></i></a></h4>
+                        <p><%= cats.description %></p>
                     </div>
                 </div>
             </div>
-            <div class="cat-form"> <!--uitklapbaar-->
-                <hr>
-                <form method="POST" action="/cats/<%= cats._id %>?_method=PUT">
-                    <div class="form-group col-md-12">
-                        <button id="RanCat" class="btn btn-outline-primary">Get a new random cat image</button>
+            <!-- All user interaction buttons-->
+            <div class="card card-body bg-light py-2">
+                <!-- Delete div --><!--uitklapbaar-->
+                <div class="confirmation mt-3 mb-2"> 
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="pb-2">Are you sure?<i class="fas fa-cat ml-2"></i><i class="fas fa-heart-broken ml-1"></i></h4>
+                            <form method="POST" action="/cats/<%= cats._id %>?_method=DELETE" style="display: inline;">
+                                <button id="catdelyes" class="btn btn-light btn-lg">YES</button>
+                            </form>
+                            <a id="catdelno" class="btn btn-light btn-lg ml-5">NO</a>
+                        </div>
                     </div>
-                    <div class="form-group col-md-6">
-                        <input id="dbname" class="form-control" type="text" name="cats[name]" value="<%= cats.name %>" required>
+                </div>
+                <!-- Edit div --><!--uitklapbaar-->
+                <div class="cat-form mt-3 mb-2"> 
+                    <form class="form-inline" method="POST" action="/cats/<%= cats._id %>?_method=PUT">
+                        <label for="RanCat">New random image</label>
+                        <input id="RanCat" type="button" class="btn btn-outline-primary mx-2 mr-5" value="Change">
+                            
+                        <label for="dbname">Name</label>
+                        <input id="dbname" class="form-control mx-2 mr-2" type="text" name="cats[name]" value="<%= cats.name %>" required>
                         <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
-                    </div>
-                </form>   
-                <hr>
-            </div>  
-
-            <div class="row justify-content-center py-2"> 
-                <a class="float-left btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                <a id="catcomments" class="float-left btn btn-outline-primary ml-2"> <i class="fas fa-comments"></i> Comments</a>
-                
-                <!-- Admin buttons -> capsilate later-->
-                <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
-                <a id="catdelete" class="float-right btn btn-outline-danger ml-2">Remove</a>
-                <a class="float-right btn btn-light ml-2" href="/cats">Go back</a>
+                            
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>   
+                    <hr>
+                </div>  
+                <!--User interaction buttons-->
+                <div class="row justify-content-center py-2"> 
+                    <a class="float-left btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                    <a id="catcomments" class="float-left btn btnPrimaryToggle ml-2"> <i class="fas fa-comments"></i> Comments</a>
+                  
+                    <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
+                    <a id="catdelete" class="float-right btn btn-outline-danger ml-2">Remove</a>
+                    <a class="float-right btn btn-light ml-2" href="/cats">Go back</a>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="row justify-content-center py-2">
-        <div class="column-md-6 align-self-center text-center">
-            <div class="card commentlist">
+        <div class="col-md-4 col-sm-6 text-center">
+            <div class="card commentlist mb-3"> <!--uitklapbaar-->
                 <div class="card-header"><h3>Comments</h3></div>
                 <div class="card-body"> 
                     <% cats.comments.forEach(function(comment) { %>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <!-- Add a comment -->
-            <div id="addcard" class="card my-3">
+            <div id="addcard" class="card">
                 <div class="card-header"><h3>Add a comment</h3></div>
                 <div class="card-body">
                     <form id="addcomment" method="POST" action="/cats/<%= cats._id %>/comments">
