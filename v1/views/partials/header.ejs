@@ -40,15 +40,20 @@
     <!-- listing of navbar menu elements using collapse-->
     <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
         <ul class="navbar-nav ml-auto flex-nowrap">
-            <li class="nav-item">
-                <a href="/cats" class="nav-link m-2 menu-item nav-active">Login</a>
-            </li>
-            <li class="nav-item">
-                <a href="/cats" class="nav-link m-2 menu-item">Sign Up</a>
-            </li>
-            <li class="nav-item">
-                <a href="/cats" class="nav-link m-2 menu-item">Logout</a>
-            </li>
+            <% if(!currentUser) { %>
+                <li class="nav-item">
+                    <a href="/login" class="nav-link m-2 menu-item nav-active">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a href="/register" class="nav-link m-2 menu-item">Sign Up</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item"> 
+                    <a class="nav-link m-2 menu-item"> Signed in as: <%= currentUser.username %></li></a>
+                <li class="nav-item">
+                    <a href="/logout" class="nav-link m-2 menu-item">Logout</a>
+                </li>
+            <% } %>
         </ul>
     </div>
 </nav>
