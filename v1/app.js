@@ -23,10 +23,10 @@ mongoose.connect(connectionString,{
     else {console.log("MongoDB connection established!")};
 });
 
-// Routes import
+// Routes requirements
 var commentRoutes   = require('./routes/comment.route'), 
     catRoutes       = require('./routes/cat.route'),
-    AuthRoutes      = require('./routes/user.route'),
+    indexRoutes     = require('./routes/index.route'),
     User            = require('./models/user.model')
 
 // APP settings and uses
@@ -39,7 +39,7 @@ app.use(methodOverride("_method"));
 
 // Seeding the file
 var seedDB = require('./seeds');
-seedDB();
+//seedDB();
 
 // PASSPORT CONFIGURATION
 // open session
@@ -50,7 +50,7 @@ app.use(
         saveUninitialized: false
     })
 );
-// CONFIG
+// CONFIG Authentication
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
@@ -67,16 +67,7 @@ app.use((req, res, next)=>{
 // Routes URL settings
 app.use('/cats/', catRoutes);
 app.use('/cats/:id/comments', commentRoutes);
-app.use(AuthRoutes);
-
-app.get("/", function (req,res) {
-    //landing page
-    res.render("home");
-});
-
-app.get("*", function (req,res) {
-    res.send("404 error! You entered the wrong page!");
-});
+app.use(indexRoutes);
 
 // --------- Socket.io ------------------
 io.on('connection', function(socket) {

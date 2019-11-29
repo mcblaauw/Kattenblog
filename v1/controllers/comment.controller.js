@@ -13,6 +13,10 @@ exports.create = function (req,res,next) {
                 if(err) {
                     console.log(err);
                 } else {
+                    //add logged-in username and id to comment 
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
                     //push comment into cat Db
                     cat.comments.push(comment);
                     cat.save();

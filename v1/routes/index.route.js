@@ -1,17 +1,13 @@
 var express     = require('express'),
     router      = express.Router(),
-    passport    = require('passport'),
-    LocalStrategy   = require('passport-local')
+    passport    = require('passport')
 
-var User            = require('../models/user.model');
-
-// CONFIG
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-//Require the controllers 
 var user_controller = require('../controllers/user.controller');
+
+// Landing page
+router.get("/", function (req,res) {
+    res.render("home");
+});
 
 // Registration
 router.get('/register',user_controller.registration);
@@ -25,11 +21,26 @@ router.post('/login',passport.authenticate("local", {
 // Logout
 router.get('/logout',user_controller.logout);
 
-// Check paths
+// Non-existing pages >> 404
+router.get("*", function (req,res) {
+    res.send("404 error! You entered the wrong page!");
+});
+
+// Logged in as user
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
+
+// Check paths for TESTING
+/*
 router.stack.forEach(function(r){
     if (r.route && r.route.path) {
         console.log(r.route.path)
     }
 });
+*/
 
 module.exports = router;

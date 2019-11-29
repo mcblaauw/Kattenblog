@@ -9,8 +9,13 @@
                     <button id="RanCat" class="btn btn-outline-primary">Generate random cat image</button>
                 </div>
                 <div class="form-group">
+                    <label for="dbname">Name</label>
                     <input id="dbname" class="form-control" type="text" name="cats[name]" placeholder="Give your random cat a cute name" required>
                     <input id="dbimage" type="hidden" name="cats[image]" value="http://lorempixel.com/640/480/cats">
+                </div>
+                <div class="form-group">
+                    <label for="dbdesc">Description</label>
+                    <input id="dbdesc" class="form-control" type="text" name="cats[description]" placeholder="Describe your cat">
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>

@@ -19,8 +19,12 @@ exports.cat_create_get = function (req,res) {
 exports.cat_create_post = function (req,res,next) {
     //Sanitize input fields by user >> remove <script> tags and other threads
     req.body.cats.name = req.sanitize(req.body.cats.name);//TODO: put in Middleware later
-    
-    Cat.create(req.body.cats, function(err){
+    var newCat = req.body.cats;
+    newCat['author'] = {
+        id: req.user._id,
+        username: req.user.username
+    };
+    Cat.create(newCat, function(err){
         if(err) {
             console.log(err);
             res.redirect('/cats');
