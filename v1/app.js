@@ -37,22 +37,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 
-// Routes URL settings
-app.use('/cats/', catRoutes);
-app.use('/cats/:id/comments', commentRoutes);
-app.use('/', AuthRoutes);
-
 // Seeding the file
 var seedDB = require('./seeds');
 seedDB();
 
 // PASSPORT CONFIGURATION
 // open session
-app.use(require("express-session")({
-    secret: "Smokey is a cute cat!",
-    resave: false,
-    saveUninitialized: false
-}));
+app.use(
+    require("express-session")({
+        secret: "Smokey is a cute cat!",
+        resave: false,
+        saveUninitialized: false
+    })
+);
 // CONFIG
 app.use(passport.initialize());
 app.use(passport.session());
@@ -61,13 +58,17 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 // Write own Middleware to make currentUser information available on all routes (whole website)
-app.use(function(req, res, next){
-    console.log(req.user);
+app.use((req, res, next)=>{
     res.locals.currentUser = req.user;
     next();
 });
 
 // ----------- General Routes -------------------
+// Routes URL settings
+app.use('/cats/', catRoutes);
+app.use('/cats/:id/comments', commentRoutes);
+app.use(AuthRoutes);
+
 app.get("/", function (req,res) {
     //landing page
     res.render("home");

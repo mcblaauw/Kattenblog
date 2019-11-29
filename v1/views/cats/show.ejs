@@ -45,9 +45,10 @@
                 <div class="row justify-content-center py-2"> 
                     <a class="float-left btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
                     <a id="catcomments" class="float-left btn btnPrimaryToggle ml-2"> <i class="fas fa-comments"></i> Comments</a>
-                  
-                    <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
-                    <a id="catdelete" class="float-right btn btn-outline-danger ml-2">Remove</a>
+                    <% if(currentUser) { %>
+                        <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
+                        <a id="catdelete" class="float-right btn btn-outline-danger ml-2">Remove</a>
+                    <% } %>
                     <a class="float-right btn btn-light ml-2" href="/cats">Go back</a>
                 </div>
             </div>
@@ -64,6 +65,7 @@
                 </div>
             </div>
             <!-- Add a comment -->
+            <% if(currentUser) { %>
             <div id="addcard" class="card">
                 <div class="card-header"><h3>Add a comment</h3></div>
                 <div class="card-body">
@@ -80,6 +82,7 @@
                     </form>
                 </div>
             </div>
+            <% } %>
             <!-- Update a comment -->
             <!--
             <div id="updatecard" class="card my-3"> 

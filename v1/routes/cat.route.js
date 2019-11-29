@@ -12,9 +12,9 @@ router.post('/', isLoggedIn, cat_controller.cat_create_post);
 // Read cat from database
 router.get('/:id',cat_controller.cat_read);
 // Update existing cat from database
-router.put('/:id',cat_controller.cat_update);
+router.put('/:id', isLoggedIn, cat_controller.cat_update);
 // Delete existing cat from database
-router.delete('/:id',cat_controller.cat_delete);
+router.delete('/:id', isLoggedIn, cat_controller.cat_delete);
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

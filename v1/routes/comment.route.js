@@ -6,9 +6,9 @@ const router = express.Router({ mergeParams: true });
 const comment_controller = require('../controllers/comment.controller');
 
 // Cats overview
-router.post('/', comment_controller.create);
-router.put('/',comment_controller.update);
-router.delete('/:comment_id',comment_controller.delete);
+router.post('/', isLoggedIn, comment_controller.create);
+router.put('/', isLoggedIn, comment_controller.update);
+router.delete('/:comment_id', isLoggedIn, comment_controller.delete);
 
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){
