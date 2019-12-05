@@ -11,6 +11,7 @@
             </div>
         </div>
         <div class="row justify-content-between">
+            <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
             <div class="col-md-4">
                 <span>
                     <!--Edit form: Press button, opens window with form fields to change, submit through rotues directly first (later bypass with jquery when necessary)-->
@@ -24,10 +25,13 @@
                     </form>
                 </span>
             </div>
+            <% } %>
         
             <div class="col text-right">
                 <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
+                <% if(currentUser) { %>
+                    <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
+                <% } %>
             </div>
         </div>
         <!-- Replies on comments here-->

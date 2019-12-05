@@ -37,7 +37,7 @@ exports.cat_create_post = function (req,res,next) {
 
 exports.cat_read = function(req,res,next) {
     Cat.findById(req.params.id)
-        .populate("comments") //TODO: should popualte without need of refresh
+        .populate("comments") //TODO: should populate without need of refresh
         .exec(function(err, cat) {
             if (err) {
                 return next(err);
@@ -48,12 +48,12 @@ exports.cat_read = function(req,res,next) {
 };
 
 
-exports.cat_update = function(req,res,next) {
+exports.cat_update = function(req,res) {
     //Sanitize input fields by user >> remove <script> tags and other threads
     req.body.cats.name = req.sanitize(req.body.cats.name); //TODO: put in Middleware later
     Cat.findByIdAndUpdate(req.params.id, {$set: req.body.cats}, function(err, cat) {
         if (err) { 
-            return next(err);
+            res.redirect('/cats');
         } else {
             console.log('Cat info has been updated!');
             res.redirect('/cats/'+req.params.id);  
@@ -61,10 +61,10 @@ exports.cat_update = function(req,res,next) {
     });
 };
 
-exports.cat_delete = function(req,res,next) {
+exports.cat_delete = function(req,res) {
     Cat.findByIdAndDelete(req.params.id, function(err) {
         if (err) {
-            return next(err);
+            res.redirect('/cats');
         } else {
             console.log('Cat info has been deleted!');   
             res.redirect('/cats');

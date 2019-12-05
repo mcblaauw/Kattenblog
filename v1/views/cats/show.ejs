@@ -32,15 +32,26 @@
                 </div>
                 <!-- Edit div --><!--uitklapbaar-->
                 <div class="cat-form mt-3 mb-2"> 
-                    <form class="form-inline" method="POST" action="/cats/<%= cats._id %>?_method=PUT">
-                        <label for="RanCat">New random image</label>
-                        <input id="RanCat" type="button" class="btn btn-outline-primary mx-2 mr-5" value="Change">
-                            
-                        <label for="dbname">Name</label>
-                        <input id="dbname" class="form-control mx-2 mr-2" type="text" name="cats[name]" value="<%= cats.name %>" required>
-                        <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
-                            
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <form method="POST" action="/cats/<%= cats._id %>?_method=PUT">
+                        <div class="form-group row"> 
+                            <label for="dbname" class="col-md-1 col-form-label">Name:</label>
+                            <div class="col-md-5">                     
+                                <input id="dbname" class="form-control mx-2 mr-2" type="text" name="cats[name]" value="<%= cats.name %>" required>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <label for="RanCat" class="col-md-2 col-form-label">Cat photo:</label>
+                            <div class="col-md-2">
+                                <input id="RanCat" type="button" class="form-control btn btn-outline-primary mx-2 mr-5" value="Change it">
+                                <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="dbdesc" class="col-md-1 col-form-label">Description</label>
+                            <div class="col-md-9">  
+                                <input id="dbdesc" class="form-control" type="text" name="cats[description]" value="<%= cats.description %>">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
                     </form>   
                     <hr>
                 </div>  
@@ -48,7 +59,7 @@
                 <div class="row justify-content-center py-2"> 
                     <a class="float-left btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
                     <a id="catcomments" class="float-left btn btnPrimaryToggle ml-2"> <i class="fas fa-comments"></i> Comments</a>
-                    <% if(currentUser) { %>
+                    <% if(currentUser && cats.author.id.equals(currentUser._id)) { %>
                         <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
                         <a id="catdelete" class="float-right btn btn-outline-danger ml-2">Remove</a>
                     <% } %>

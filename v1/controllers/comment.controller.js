@@ -35,7 +35,7 @@ exports.update = function(req,res) {
             res.redirect("back");
         } else {
             console.log('Comment has been updated!'); 
-            res.redirect("back");
+            res.redirect("/cats/" + req.params.id );
         }
     });
 };
@@ -47,7 +47,7 @@ exports.delete = function (req,res) {
             res.redirect("back");
         } else {
             console.log('Comment has been deleted!');   
-            res.redirect('back');
+            res.redirect("/cats/" + req.params.id );
         }
     });
 };
