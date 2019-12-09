@@ -14,12 +14,7 @@
             <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
             <div class="col-md-4">
                 <span>
-                    <!--Edit form: Press button, opens window with form fields to change, submit through rotues directly first (later bypass with jquery when necessary)-->
-                    <form id="comedit" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT" style="display: inline;">
-                        <input type="hidden" name="comment[name]" value="<%= comment.name %>">
-                        <input type="hidden" name="comment[message]" value="<%= comment.message %>">
-                        <button id="pencil" style="border:none; background-color: white;"><i class="fa fa-edit"></i></button>
-                    </form>
+                    <a id="comupdate" style="border:none; background-color: white;"><i class="fa fa-edit"></i></a>
                     <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
                         <button id="trash" style="border:none; background-color: white;"><i class="fa fa-trash"></i></button>
                     </form>
@@ -28,12 +23,23 @@
             <% } %>
         
             <div class="col text-right">
-                <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
                 <% if(currentUser) { %>
+                    <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
                     <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
                 <% } %>
             </div>
         </div>
         <!-- Replies on comments here-->
+    </div>
+    <!-- Edit comment div --><!--uitklapbaar-->
+    <div id="card-comedit" class="card-body"> 
+        <form id="form-comedit" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT">
+            <div class="form-group">
+                <input class="form-control" type="text" name="comment[message]" value="<%= comment.message %>">
+            </div>
+            <div class="form-group">
+                <button id="button-comedit" class="btn btn-primary btm-sm">Update comment</button>
+            </div>
+        </form>
     </div>
 </div>

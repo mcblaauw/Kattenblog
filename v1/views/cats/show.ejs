@@ -34,25 +34,25 @@
                 <div class="cat-form mt-3 mb-2"> 
                     <form method="POST" action="/cats/<%= cats._id %>?_method=PUT">
                         <div class="form-group row"> 
-                            <label for="dbname" class="col-md-1 col-form-label">Name:</label>
+                            <label for="dbname" class="col-md-2 col-form-label">Name:</label>
                             <div class="col-md-5">                     
-                                <input id="dbname" class="form-control mx-2 mr-2" type="text" name="cats[name]" value="<%= cats.name %>" required>
+                                <input id="dbname" class="form-control" type="text" name="cats[name]" value="<%= cats.name %>" required>
                             </div>
                             <div class="col-md-1"></div>
                             <label for="RanCat" class="col-md-2 col-form-label">Cat photo:</label>
                             <div class="col-md-2">
-                                <input id="RanCat" type="button" class="form-control btn btn-outline-primary mx-2 mr-5" value="Change it">
+                                <input id="RanCat" type="button" class="form-control btn btn-outline-primary" value="Change it">
                                 <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="dbdesc" class="col-md-1 col-form-label">Description</label>
-                            <div class="col-md-9">  
+                            <label for="dbdesc" class="col-md-2 col-form-label">Description</label>
+                            <div class="col-md-7">  
                                 <input id="dbdesc" class="form-control" type="text" name="cats[description]" value="<%= cats.description %>">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary mr-4" style="position: absolute; right: 0;">Submit</button>
                         </div>
-                    </form>   
+                    </form>
                     <hr>
                 </div>  
                 <!--User interaction buttons-->
@@ -94,25 +94,6 @@
                 </div>
             </div>
             <% } %>
-            <!-- Update a comment -->
-            <!--
-            <div id="updatecard" class="card my-3"> 
-                <div class="card-header"><h3>Update your comment</h3></div>
-                <div class="card-body">
-                    <form id="updatecomment" action="">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="comments[name]" required>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="comments[message]" required>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-large">Update comment</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            -->
         </div>
     </div>
 </div>

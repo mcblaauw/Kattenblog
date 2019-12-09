@@ -117,6 +117,15 @@ Comments styling
     border: 1.5px solid red;
 }
 
+div#card-comedit {
+    border: 1.5px solid #007BFF;
+    border-radius: 10%;
+}
+
+div#card-comedit {
+    display: none;
+}
+
 /* 
 To include later: Fader which makes part of comments blurry at first but reveal it later when user presses button.
 */

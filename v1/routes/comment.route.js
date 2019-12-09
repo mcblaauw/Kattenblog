@@ -8,7 +8,7 @@ const comment_controller = require('../controllers/comment.controller');
 
 // Cats overview
 router.post('/', isLoggedIn, comment_controller.create);
-router.put('/', checkCommentOwnership, comment_controller.update);
+router.put('/:comment_id', checkCommentOwnership, comment_controller.update);
 router.delete('/:comment_id', checkCommentOwnership, comment_controller.delete);
 
 function isLoggedIn(req, res, next){
@@ -21,7 +21,7 @@ function isLoggedIn(req, res, next){
 function checkCommentOwnership(req, res, next) {
     //Is user logged in?
     if(req.isAuthenticated()){
-        Comment.findById(req.params.id, function(err,foundComment){
+        Comment.findById(req.params.comment_id, function(err,foundComment){
             if(err) {
                 res.redirect("back");
             } else {

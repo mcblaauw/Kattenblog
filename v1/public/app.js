@@ -20,8 +20,22 @@ $('#catdelno').on('click',function(){
     $('#catdelete').toggleClass("btnRemoveToggle");
 });
 
+//Needs update: currently this selects the first div#card-comedit element every time. Should be associated with corresponding icomment
+$('a#comupdate').on('click',function(){
+    $("div#card-comedit").slideToggle("slow");
+});
+
+/*
+$("div.commentlist").on('click','a#comupdate', function(){
+    console.log($(this).parents().closest('#icomment')[0].lastElementChild);
+    console.log($(this).parents().closest('#icomment')[0].querySelector('div#card-comedit'));
+    $(this).parents().closest('#icomment')[0].querySelector('div#card-comedit').slideToggle("slow");
+});
+*/
+
 // 2. Add submit handler to comment forms
 // Source: https://api.jquery.com/jQuery.post/
+// A. Add a comment
 $("form#addcomment").submit(function(event){
     // Stop form from submitting directly
     event.preventDefault();
@@ -50,7 +64,30 @@ $("form#addcomment").submit(function(event){
     });
 });
 
-// Delete any of the comments
+// B. Update any of the comments
+/*
+$("div.commentlist").on('click','button#button-comedit', function(event){
+    // Stop form from submitting directly
+    event.preventDefault();
+
+    // Get form url value
+    var url = $(this).parent().attr("action");
+    
+    // FRONTEND Update element visually
+    //$(this).parents().closest('#icomment').fadeOut(500,function(){
+    //    $(this).remove;
+    //}); 
+
+    // BACKEND Update element using jquery POST-->PUT method
+    var posting = $.post( url );
+    posting.done(function() {        
+        $(".commentlist").slideDown("slow");
+        $('#catcomments').addClass("btnPrimaryToggle");
+    });
+});
+*/
+
+// C. Delete any of the comments
 $("div.commentlist").on('click','button#trash', function(event){
     // Stop form from submitting directly
     event.preventDefault();

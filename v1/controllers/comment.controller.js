@@ -2,7 +2,7 @@ const Comment = require('../models/comment.model');
 const Cat = require('../models/cat.model');
 
 // ----------- Routes -------------------
-exports.create = function (req,res,next) {
+exports.create = function (req,res) {
     Cat.findById(req.params.id, function(err, cat) {
         if (err) {
             console.log(err);
@@ -29,7 +29,7 @@ exports.create = function (req,res,next) {
 };
 
 exports.update = function(req,res) {
-    Comment.findByIdAndUpdate(req.params.comment_id, function(err) {
+    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, comment) {
         if (err) {
             console.log(err);
             res.redirect("back");
