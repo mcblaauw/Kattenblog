@@ -26,14 +26,6 @@ router.get("*", function (req,res) {
     res.send("404 error! You entered the wrong page!");
 });
 
-// Logged in as user
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
 // Check paths for TESTING
 /*
 router.stack.forEach(function(r){
