@@ -11,6 +11,7 @@ exports.create = function (req,res) {
             //Add new comment to Db
             Comment.create(req.body.comments, function(err, comment){
                 if(err) {
+                    req.flash("error","Something went wrong. Comment not created.");
                     console.log(err);
                 } else {
                     //add logged-in username and id to comment 
@@ -21,6 +22,7 @@ exports.create = function (req,res) {
                     cat.comments.push(comment);
                     cat.save();
                     console.log('New comment has been added!');  
+                    req.flash("success","Succesfully added comment");
                     res.redirect("/cats/"+req.params.id);
                 }
             })            
@@ -35,6 +37,7 @@ exports.update = function(req,res) {
             res.redirect("back");
         } else {
             console.log('Comment has been updated!'); 
+            req.flash("success","Comment updated");
             res.redirect("/cats/" + req.params.id );
         }
     });
@@ -47,6 +50,7 @@ exports.delete = function (req,res) {
             res.redirect("back");
         } else {
             console.log('Comment has been deleted!');   
+            req.flash("success","Comment deleted");
             res.redirect("/cats/" + req.params.id );
         }
     });

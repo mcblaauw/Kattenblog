@@ -17,16 +17,18 @@ exports.registered = function(req,res) {
     User.register(newUser, req.body.password, function(err, user){
         if(err) {
             console.log(err);
+            req.flash("error", err.message);
             return res.render("register");
         }
         passport.authenticate("local")(req, res, function(){
+            req.flash("success","You have been registrated! Welcome " + user.username);
             res.redirect("/cats");
         });
     });
 };
 
 exports.login = function(req,res) {
-    res.render("login");  
+    res.render("login");
 };
 
 exports.loggedin = function(req,res) {
@@ -35,5 +37,6 @@ exports.loggedin = function(req,res) {
 
 exports.logout = function(req,res) {
     req.logout();
+    req.flash("success", "Logged you out!"); 
     res.redirect("/cats");
 };

@@ -6,7 +6,7 @@ var user_controller = require('../controllers/user.controller');
 
 // Landing page
 router.get("/", function (req,res) {
-    res.render("home");
+    res.render("landing");
 });
 
 // Registration

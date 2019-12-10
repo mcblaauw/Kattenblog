@@ -7,11 +7,11 @@ var express         = require('express'),
     LocalStrategy   = require('passport-local'),
     methodOverride  = require("method-override"), //HTML PUT and DELETE requests handling
     expressSanitizer = require("express-sanitizer"), //Sanitize user input for invalid js protection
-    faker           = require("faker/locale/nl"), // faker cats
+    flash           = require('connect-flash'),
 //socket.io experiment (server-client realtime communication)
     server          = require('http').createServer(app),
     io              = require('socket.io')(server)
-
+    
 // MongoDB database
 const connectionString = "mongodb+srv://mcblaauw:pqgCU3ex0XHNDkLY@cluster0-kwpgf.azure.mongodb.net/Yelpcamp?retryWrites=true&w=majority";
 mongoose.connect(connectionString,{ 
@@ -36,10 +36,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
+app.use(flash());
 
 // Seeding the file
 var seedDB = require('./seeds');
-//seedDB();
+seedDB();
 
 // PASSPORT CONFIGURATION
 // open session
@@ -57,9 +58,11 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Write own Middleware to make currentUser information available on all routes (whole website)
+// Store global variables inside res.locals for perminent access
 app.use((req, res, next)=>{
     res.locals.currentUser = req.user;
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
     next();
 });
 
@@ -75,19 +78,14 @@ io.on('connection', function(socket) {
     socket.on('disconnect', function(){
         console.log('a user has disconnected');
     });
+    /*
     socket.on('cat-event', function() {
         var caturl = faker.image.cats();
         console.log('random cat image generated');
         io.emit('message', caturl);
     });
+    */
 });
-
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 
 // ---------- set up port and broadcast ------------
 let port = 3000;
