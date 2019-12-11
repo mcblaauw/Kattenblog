@@ -8,6 +8,8 @@ body {
 }
 */
 
+/* NAVBAR and HEADING styling */
+
 .navbar {
     border-bottom-left-radius: 5%;
     border-bottom-right-radius: 5%;
@@ -101,6 +103,7 @@ Font Awesome styling
 /*
 Comments styling 
 */
+
 .card-inner{
     margin-left: 4rem;
 }
@@ -117,12 +120,12 @@ Comments styling
     border: 1.5px solid red;
 }
 
-div#card-comedit {
+div.icomment_edit {
     border: 1.5px solid #007BFF;
     border-radius: 10%;
 }
 
-div#card-comedit {
+div.icomment_edit {
     display: none;
 }
 

@@ -2,6 +2,13 @@ body {
     background-color: #000;
 }
 
+div.cright {
+    z-index: 0;
+    position: relative;
+    padding-top: 45vh;
+    margin-left: 5px;
+}
+
 #landing-header {
     z-index: 1;
     position: relative;
@@ -51,7 +58,7 @@ body {
     animation-delay: 20s; 
 }
 .slideshow li:nth-child(4) { 
-    background-image: url(https://i.imgur.com/FmcJkG0.jpg);
+    background-image: url(https://i.imgur.com/zb3topR.jpg);
     animation-delay: 30s; 
 }
 .slideshow li:nth-child(5) { 

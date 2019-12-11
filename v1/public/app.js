@@ -20,18 +20,9 @@ $('#catdelno').on('click',function(){
     $('#catdelete').toggleClass("btnRemoveToggle");
 });
 
-//Needs update: currently this selects the first div#card-comedit element every time. Should be associated with corresponding icomment
-$('a#comupdate').on('click',function(){
-    $("div#card-comedit").slideToggle("slow");
-});
-
-/*
 $("div.commentlist").on('click','a#comupdate', function(){
-    console.log($(this).parents().closest('#icomment')[0].lastElementChild);
-    console.log($(this).parents().closest('#icomment')[0].querySelector('div#card-comedit'));
-    $(this).parents().closest('#icomment')[0].querySelector('div#card-comedit').slideToggle("slow");
+    $(this).parents().closest('.icomment').children(".icomment_edit").slideToggle("slow");
 });
-*/
 
 // 2. Add submit handler to comment forms
 // Source: https://api.jquery.com/jQuery.post/
@@ -74,7 +65,7 @@ $("div.commentlist").on('click','button#button-comedit', function(event){
     var url = $(this).parent().attr("action");
     
     // FRONTEND Update element visually
-    //$(this).parents().closest('#icomment').fadeOut(500,function(){
+    //$(this).parents().closest('.icomment').fadeOut(500,function(){
     //    $(this).remove;
     //}); 
 
@@ -96,7 +87,7 @@ $("div.commentlist").on('click','button#trash', function(event){
     var url = $(this).parent().attr("action");
     
     // FRONTEND Remove element visually
-    $(this).parents().closest('#icomment').fadeOut(500,function(){
+    $(this).parents().closest('.icomment').fadeOut(500,function(){
         $(this).remove;
     }); 
 

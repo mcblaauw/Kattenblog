@@ -1,45 +1,52 @@
-<div class="card" id="icomment">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4">
-                <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+<div class="icomment">
+    <!--Show comment-->
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                </div>
+                <div class="col-md-8">
+                    <p><strong><%= comment.author.username %></strong></p>
+                    <div class="clearfix"></div>
+                    <p><%= comment.message %></p>
+                </div>
             </div>
-            <div class="col-md-8">
-                <p><strong><%= comment.author.username %></strong></p>
-                <div class="clearfix"></div>
-                <p><%= comment.message %></p>
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
-            <div class="col-md-4">
-                <span>
-                    <a id="comupdate" style="border:none; background-color: white;"><i class="fa fa-edit"></i></a>
-                    <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
-                        <button id="trash" style="border:none; background-color: white;"><i class="fa fa-trash"></i></button>
-                    </form>
-                </span>
-            </div>
-            <% } %>
-        
-            <div class="col text-right">
-                <% if(currentUser) { %>
-                    <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
-                    <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
+            <div class="row justify-content-between">
+                <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                <div class="col-md-4">
+                    <span>
+                        <a id="comupdate" style="border:none; background-color: white;"><i class="fa fa-edit"></i></a>
+                        <form id="comdel" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=DELETE" style="display: inline;">
+                            <button id="trash" style="border:none; background-color: white;"><i class="fa fa-trash"></i></button>
+                        </form>
+                    </span>
+                </div>
                 <% } %>
+            
+                <!-- Like and reply
+                <div class="col text-right">
+                    <% if(currentUser) { %>
+                        <a class="btn btn-sm text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                        <a class="btn btn-sm btn-outline-primary"> <i class="fa fa-reply"></i> Reply</a>
+                    <% } %>
+                </div>
+                -->
             </div>
+            <!-- Replies on comments here-->
         </div>
-        <!-- Replies on comments here-->
     </div>
-    <!-- Edit comment div --><!--uitklapbaar-->
-    <div id="card-comedit" class="card-body"> 
-        <form id="form-comedit" method="POST" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT">
-            <div class="form-group">
-                <input class="form-control" type="text" name="comment[message]" value="<%= comment.message %>">
-            </div>
-            <div class="form-group">
-                <button id="button-comedit" class="btn btn-primary btm-sm">Update comment</button>
-            </div>
-        </form>
+    <!-- Edit comment --><!--uitklapbaar-->
+    <div class="card icomment_edit"> 
+        <div class="card-body">
+            <form id="form-comedit" method="post" action="/cats/<%= cats._id %>/comments/<%= comment._id %>?_method=PUT">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="comment[message]" value="<%= comment.message %>">
+                </div>
+                <div class="form-group">
+                    <button id="button-comedit" class="btn btn-primary btm-sm">Update comment</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

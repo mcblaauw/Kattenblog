@@ -19,7 +19,7 @@
             <!-- All user interaction buttons-->
             <div class="card card-body bg-light py-2">
                 <!-- Delete div --><!--uitklapbaar-->
-                <div class="confirmation mt-3 mb-2"> 
+                <div class="confirmation"> 
                     <div class="card">
                         <div class="card-body">
                             <h4 class="pb-2">Are you sure?<i class="fas fa-cat ml-2"></i><i class="fas fa-heart-broken ml-1"></i></h4>
@@ -31,23 +31,21 @@
                     </div>
                 </div>
                 <!-- Edit div --><!--uitklapbaar-->
-                <div class="cat-form mt-3 mb-2"> 
+                <div class="cat-form"> 
                     <form method="POST" action="/cats/<%= cats._id %>?_method=PUT">
                         <div class="form-group row"> 
                             <label for="dbname" class="col-md-2 col-form-label">Name:</label>
-                            <div class="col-md-5">                     
+                            <div class="col-md-3">                     
                                 <input id="dbname" class="form-control" type="text" name="cats[name]" value="<%= cats.name %>" required>
                             </div>
-                            <div class="col-md-1"></div>
-                            <label for="RanCat" class="col-md-2 col-form-label">Cat photo:</label>
-                            <div class="col-md-2">
-                                <input id="RanCat" type="button" class="form-control btn btn-outline-primary" value="Change it">
-                                <input id="dbimage" type="hidden" name="cats[image]" value="<%= cats.image %>">
+                            <label for="ImgCat" class="col-md-2 col-form-label">Image URL:</label>
+                            <div class="col-md-5">                     
+                                <input id="ImgCat" class="form-control" type="text" name="cats[image]" value="<%= cats.image %>" required>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="dbdesc" class="col-md-2 col-form-label">Description</label>
-                            <div class="col-md-7">  
+                            <label for="dbdesc" class="col-md-2 col-form-label">Description:</label>
+                            <div class="col-md-8">  
                                 <input id="dbdesc" class="form-control" type="text" name="cats[description]" value="<%= cats.description %>">
                             </div>
                             <button type="submit" class="btn btn-primary mr-4" style="position: absolute; right: 0;">Submit</button>
@@ -57,7 +55,9 @@
                 </div>  
                 <!--User interaction buttons-->
                 <div class="row justify-content-center py-2"> 
+                    <!--
                     <a class="float-left btn text-white btn-danger"> <i class="fa fa-heart"></i> Like</a>
+                    -->
                     <a id="catcomments" class="float-left btn btnPrimaryToggle ml-2"> <i class="fas fa-comments"></i> Comments</a>
                     <% if(currentUser && cats.author.id.equals(currentUser._id)) { %>
                         <a id="catupdate" class="float-right btn btn-outline-primary ml-2">Edit</a>
