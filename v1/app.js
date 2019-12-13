@@ -6,6 +6,7 @@ var express         = require('express'),
     passport        = require('passport'),
     LocalStrategy   = require('passport-local'),
     methodOverride  = require("method-override"), //HTML PUT and DELETE requests handling
+    multer          = require("multer"),
     expressSanitizer = require("express-sanitizer"), //Sanitize user input for invalid js protection
     flash           = require('connect-flash'),
 //socket.io experiment (server-client realtime communication)
@@ -26,8 +27,11 @@ mongoose.connect(connectionString,{
 // Routes requirements
 var commentRoutes   = require('./routes/comment.route'), 
     catRoutes       = require('./routes/cat.route'),
-    indexRoutes     = require('./routes/index.route'),
-    User            = require('./models/user.model')
+    indexRoutes     = require('./routes/index.route')
+
+// Model import
+var User            = require('./models/user.model'),
+    Image           = require('./models/image.model')
 
 // APP settings and uses
 app.set("view engine","ejs");
