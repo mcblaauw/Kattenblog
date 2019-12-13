@@ -32,7 +32,7 @@ exports.login = function(req,res) {
 };
 
 exports.loggedin = function(req,res) {
-     
+    //req.flash("success", "Welcome back " + user.username);
 };
 
 exports.logout = function(req,res) {

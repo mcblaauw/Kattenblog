@@ -6,7 +6,6 @@ var express         = require('express'),
     passport        = require('passport'),
     LocalStrategy   = require('passport-local'),
     methodOverride  = require("method-override"), //HTML PUT and DELETE requests handling
-    multer          = require("multer"),
     expressSanitizer = require("express-sanitizer"), //Sanitize user input for invalid js protection
     flash           = require('connect-flash'),
 //socket.io experiment (server-client realtime communication)
