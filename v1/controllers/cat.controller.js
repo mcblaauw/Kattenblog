@@ -42,8 +42,6 @@ exports.cat_read = function(req,res,next) {
             if (err) {
                 return next(err);
             } else {
-                console.log(res.locals.currentUser);
-                console.log(req.user);
                 res.render('cats/show',{cats: cat});
             }
         });

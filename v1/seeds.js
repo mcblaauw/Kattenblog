@@ -2,6 +2,13 @@ var Cat     = require('./models/cat.model');
 var Comment = require('./models/comment.model');
 var User    = require('./models/user.model');
 var faker   = require('faker');
+var passport        = require('passport');
+var LocalStrategy   = require('passport-local');
+
+// CONFIG
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 Smokey_imgs = [
     "https://i.imgur.com/3YRlUQCh.jpg",
@@ -79,6 +86,9 @@ function seedDB() {
                         console.log(err);
                     }
                     console.log("User added to database: "+user.username);
+
+                    // 1a. Give created user logged in status
+                    //passport.authenticate("local");
 
                     // 2. Start seeding new cat entrees!
                     Catdata.forEach(function(Catseed){

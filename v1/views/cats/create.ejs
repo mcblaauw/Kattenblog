@@ -2,16 +2,19 @@
     
 <div class="container">
     <h1>Add a new photo!</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6">
             <form method="post" action="/cats">
                 <div class="form-group">
                     <label for="dbname">Name</label>
                     <input id="dbname" class="form-control" type="text" name="cats[name]" placeholder="Typ name here" required>
                 </div>
                 <div class="form-group">
-                    <label for="dbname">Image URL</label>
-                    <input id="dbname" class="form-control" type="text" aria-describedby="ImageHelp" name="cats[image]" placeholder="Typ image URL here" required>
+                    <label for="dbimage">Image URL</label>
+                    <div class="input-group">
+                        <input id="dbimage" class="form-control" type="text" aria-describedby="ImageHelp" name="cats[image]" placeholder="Typ image URL here" required>
+                        <button class="dbimage_button btn btn-primary" type="button">Preview</button>
+                    </div>
                     <small id="ImageHelp" class="form-text text-muted">Tip: upload image to imgur or similar website first and link the address above.</small>
                 </div>
                 <div class="form-group">
@@ -24,6 +27,7 @@
             </form>
             <a href="/cats">Go back</a>
         </div>
+        <div class="catpreview col-md-6 align-middle">&nbsp;</div>
     </div>  
 </div>
 

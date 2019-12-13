@@ -1,5 +1,12 @@
 // Cat ID buttons: 
 // 1. activates slide toggle with more options and change in button fill color
+
+// Preview cat image given the link given by user (from imgur or other source)
+$('.dbimage_button').on('click', function(){
+    $imglink = $('#dbimage').val();
+    $('.catpreview').html("<img src='"+$imglink+"' alt='cat test'>");
+});
+
 $('#catupdate').on('click',function(){
     $(".cat-form").slideToggle("slow");
     $('#catupdate').toggleClass("btnPrimaryToggle");
