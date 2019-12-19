@@ -21,7 +21,15 @@
                         <div class="cat-edit"><button class="btn btn-primary" onclick="location.href='/cats/<%= cat._id %>'">About me(ow)</button></div>
                     </div>
                     <div class="caption">
-                        <h4><%= cat.name %></h4>
+                        <div class="caption-footer row justify-content-between mb-3">
+                            <div class="col-6 text-left">
+                                <h4 class="ml-2" style="margin-top: .4rem;"><%= cat.name %></h4>
+                            </div>
+                            <div class="col-6 text-right">
+                                <a href="#" class="btn"><span><i class="fas fa-chevron-up ml-2"></i></span> <%= cat.meta.votes %></a>
+                                <a href="#" class="btn"><span><i class="fas fa-heart ml-2"></i></span> <%= cat.meta.favs %></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

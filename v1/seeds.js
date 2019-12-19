@@ -48,7 +48,8 @@ Smokey_imgs.forEach(img => {
     Catdata.push({
         name: "Smokey - "+count,
         image: img,
-        description: "\u20AC"+faker.commerce.price()
+        description: "Hello World, this is Smokey.",
+        meta: {votes: 0, favs: 0}
     });
     count++;
 });

@@ -8,7 +8,21 @@
                 <div id="randomcat">
                     <img class="img-responsive" src="<%= cats.image %>">
                     <div class="caption-full">
-                        <h4 class="text-center"><a>Meet <%= cats.name %><i class="fas fa-paw ml-1"></i></a></h4>
+                        <div class="row justify-content-between">
+                            <div class="col-6">
+                                <h4 class="ml-2 mt-1"><a>Meet <%= cats.name %><i class="fas fa-paw ml-1"></i></a></h4>
+                            </div>
+                            <div class="col-6">
+                                <p class="caption-footer float-right">
+                                    <form method="POST" action="/cats/<%= cats._id %>?_method=PUT" style="display: inline;">
+                                        <button id="catupvote" class="btn btn-light btn-lg"><i class="fas fa-chevron-up"></i> <%= cats.meta.votes %></button>
+                                    </form>
+                                    <form method="POST" action="/cats/<%= cats._id %>?_method=PUT" style="display: inline;">
+                                        <button id="catfav" class="btn btn-light btn-lg"><i class="fas fa-heart"></i> <%= cats.meta.favs %></button>
+                                    </form>
+                                </p> 
+                            </div>
+                        </div>
                         <p><%= cats.description %></p>
                         <p>
                             <em>Submitted by: <%= cats.author.username %></em>
@@ -48,7 +62,7 @@
                             <div class="col-md-8">  
                                 <input id="dbdesc" class="form-control" type="text" name="cats[description]" value="<%= cats.description %>">
                             </div>
-                            <button type="submit" class="btn btn-primary mr-4" style="position: absolute; right: 0;">Submit</button>
+                            <button type="submit" class="btn btn-primary mr-4">Submit</button>
                         </div>
                     </form>
                     <hr>

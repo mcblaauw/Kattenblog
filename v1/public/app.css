@@ -148,7 +148,7 @@ button#trash:hover, a#pencil:hover {
     color: blue;
 }
 
-.fa-trash {
+.fa-trash, .fa-heart {
     color: rgb(255, 15, 0);
 }
 
